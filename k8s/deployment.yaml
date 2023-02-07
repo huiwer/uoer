@@ -1,0 +1,34 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: uoer
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: uoer
+  template:
+    metadata:
+      labels:
+        app: uoer
+    spec:
+      containers:
+      - image: okteto.dev/uoer:latest
+        name: uoer
+        ports:
+        - containerPort: 8080
+        env:
+        - name: PORT
+          value: "8080"
+        - name: ProxySite
+          value: "icook.tw"
+        - name: Vless_UUID
+          value: "166475e7-970c-4cac-9272-92fd0e19fe2c"
+        - name: Vless_Path
+          value: "/ss33"
+        - name: Vmess_UUID
+          value: "166475e7-970c-4cac-9272-92fd0e19fe2c"
+        - name: Vmess_Path
+          value: "/S44"
+        - name: Share_Path
+          value: "/Share34"
